@@ -1,8 +1,7 @@
 class CollectionsController < ApplicationController
-    skip_before_action :authorized, only: [:create]
+    # skip_before_action :authorized, only: [:create]
 
     def index
-        collections = Collection.all 
-        render json: collections
-    end
+        render json: Collection.all
+        end
 end

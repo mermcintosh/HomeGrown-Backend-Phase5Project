@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2021_02_24_170557) do
 
   create_table "plants", force: :cascade do |t|
     t.string "name"
+    t.string "nickname"
     t.string "category"
     t.string "description"
     t.string "light"

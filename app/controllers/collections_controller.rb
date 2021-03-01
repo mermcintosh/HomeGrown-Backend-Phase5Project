@@ -3,5 +3,24 @@ class CollectionsController < ApplicationController
 
     def index
         render json: Collection.all
-        end
+    end
+
+    def show 
+        collection = Collection.find(params[:id])
+        render json: collection
+    end 
+
+    def create
+        collection = Collection.create(user_id: params ["user_id"], plant_id: params ["plant_id"], nickname: params ["nickname"] )
+        render json: collection
+
+    end
+
+
+
+
+    # def show
+    #     @invoice = Invoice.find(params[:id])
+    #     @user = User.find(params[:user_id])
+    #   end
 end

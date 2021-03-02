@@ -11,7 +11,7 @@ class CollectionsController < ApplicationController
     end 
 
     def create
-        collection = Collection.create(user_id: params ["user_id"], plant_id: params ["plant_id"], nickname: params ["nickname"] )
+        collection = Collection.create(user_id: params["user_id"], plant_id: params["plant_id"])
         render json: collection
 
     end

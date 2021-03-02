@@ -2,8 +2,22 @@ class UsersController < ApplicationController
     # skip_before_action :authorized, only: [:create]
 
     def index
-      render json: User.all
+      users = User.all
+      render json: users.to_json({
+        include:{
+          collections: {except: [:created_at, :updated_at]},
+        }
+      })
       end
+
+    def show
+      user = User.find(params[:id])
+      render json: user.to_json({
+        include:{
+          collections: {except: [:created_at, :updated_at]},
+        }
+      })
+    end
 
     def create
         user = User.create(user_params)

@@ -7,14 +7,9 @@ class AuthController < ApplicationController
               collections: {except: [:created_at, :updated_at]},
             }
           })
-
-    # user = User.find(params[:id])
-    #   render json: user.to_json({
-    #     include:{
-    #       collections: {except: [:created_at, :updated_at]},
-    #     }
-    #   })
   end
+
+  
   #   skip_before_action :authorized, only: [:create, :auto_login]
    
   # def create

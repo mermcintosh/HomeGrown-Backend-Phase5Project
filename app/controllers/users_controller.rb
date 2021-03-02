@@ -3,21 +3,23 @@ class UsersController < ApplicationController
 
     def index
       users = User.all
-      render json: users.to_json({
-        include:{
-          collections: {except: [:created_at, :updated_at]},
-        }
-      })
+      render json: User.all.to_json({include: [:collections => {:include => [:plant]}], except: [:created_at, :updated_at]})
+      # render json: users.to_json({
+      #   include:{
+      #     collections: {except: [:created_at, :updated_at]},
+      #   }
+      # })
       end
 
     def show
       user = User.find(params[:id])
-      render json: user.to_json({
-        include:{
-          collections: {except: [:created_at, :updated_at]},
-        }
-      })
+      render json: user.to_json({include: [:collections => {:include => [:plant]}], except: [:created_at, :updated_at]})
     end
+
+    # def index
+    #   @users = User.all
+    #   render json: User.all.to_json({include: [:rooms => {:include => [:instructor]}], except: [:created_at, :updated_at]})
+    # end
 
     def create
         user = User.create(user_params)

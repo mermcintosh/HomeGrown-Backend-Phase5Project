@@ -2,11 +2,8 @@ class AuthController < ApplicationController
 
   def create
     user = User.find_by(username: params[:username])
-      render json: user.to_json({
-            include:{
-              collections: {except: [:created_at, :updated_at]},
-            }
-          })
+    render json: user.to_json({include: [:collections => {:include => [:plant]}], except: [:created_at, :updated_at]})
+
   end
 
   

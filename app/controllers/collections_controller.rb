@@ -12,14 +12,25 @@ class CollectionsController < ApplicationController
 
     def create
         collection = Collection.create(user_id: params["user_id"], plant_id: params["plant_id"])
-        render json: collection
+        render json: collection.to_json({include: [:plant]}) 
     end
 
+    def update
+        collection = Collection.find(params[:id])
+        collection.update(collection_params)
+        render json: collection
+      end
 
+    def destroy
+        collection = Collection.find(params[:id])
+        collection.destroy
+        render json: {"Deleted": "deleted", collection: collection}
+    end
 
+    private
 
-    # def show
-    #     @invoice = Invoice.find(params[:id])
-    #     @user = User.find(params[:user_id])
-    #   end
+    def collection_params
+        params.require(:collection).permit(:user_id, :plant_id, :nickname)
+    end
+
 end

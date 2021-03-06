@@ -27,6 +27,11 @@ class CollectionsController < ApplicationController
         render json: {"Deleted": "deleted", collection: collection}
     end
 
+    # def destroy
+    #     Collection.find_by(user_id: params[:user_id], plant_id: params[:plant_id])
+    #     render json: {"Deleted": "deleted"}
+    # end
+
     private
 
     def collection_params

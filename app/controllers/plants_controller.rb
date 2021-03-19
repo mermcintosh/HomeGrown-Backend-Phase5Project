@@ -1,5 +1,4 @@
 class PlantsController < ApplicationController
-    # skip_before_action :authorized, only: [:create]
 
         def index
             render json: Plant.all

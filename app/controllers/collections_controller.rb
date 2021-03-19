@@ -1,5 +1,4 @@
 class CollectionsController < ApplicationController
-    # skip_before_action :authorized, only: [:create]
 
     def index
         render json: Collection.all
@@ -26,11 +25,6 @@ class CollectionsController < ApplicationController
         collection.destroy
         render json: {"Deleted": "deleted", collection: collection}
     end
-
-    # def destroy
-    #     Collection.find_by(user_id: params[:user_id], plant_id: params[:plant_id])
-    #     render json: {"Deleted": "deleted"}
-    # end
 
     private
 
